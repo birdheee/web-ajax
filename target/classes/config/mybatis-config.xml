@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+	<!--mapper에서 매칭할 parameter Type 별칭 설정
+	<typeAliases>
+		<typeAlias type="kr.or.iei.student.model.vo.Student" alias="student"/>
+	</typeAliases>
+	-->
+	<settings>
+		<!-- camel case로 -->
+		<setting name="mapUnderscoreToCamelCase" value="true"></setting>
+	</settings>
+	<environments default="development">
+	
+		<!-- environment id를 구분하여 연결할 DB를 여러개 구성할 수 도 있음 -->
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+				<dataSource type="POOLED">
+					<property name="driver" value="org.mariadb.jdbc.Driver"/>
+					<property name="url" value="jdbc:mariadb://localhost:3306/game"/>
+					<property name="username" value="KDTEST"/>
+					<property name="password" value="kd1824java"/>
+				</dataSource>
+		</environment>
+		
+	</environments>
+	
+	<mappers>
+		<!-- 매퍼를 매핑하는 곳. 하나의 매퍼에 여러 테이블을 두면 복잡해짐 -->
+		<mapper resource="mapper/UserInfoMapper.xml"/>
+	</mappers>
+	
+</configuration>
